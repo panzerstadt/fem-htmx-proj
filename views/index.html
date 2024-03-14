@@ -6,13 +6,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/htmx.org@latest/dist/htmx.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    Count {{ .Count }}
+    {{ template "count" . }}
 </body>
 
 </html>
+{{ end }}
+
+{{ block "count" . }}
+Count {{ .Count }}
+<button hx-target="body" hx-post="/count">Count</button>
 {{ end }}
